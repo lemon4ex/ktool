@@ -27,6 +27,11 @@ ktool resign -c certNname -m mobileProvision [-p a.dylib,b.dylib...] [-a a.dylib
 	-help 显示帮助信息
 	-verbose 输出debug详细信息
 ```
+栗子
+```
+ktool resign -verbose -c "iPhone Developer: xxxxxx xxxx (xxxxxxxxx)" -m "/Users/lemon4ex/Desktop/dev.mobileprovision" -p "/Users/lemon4ex/Desktop/libHook1.dylib,/Users/lemon4ex/Desktop/libHook2.dylib" -i "com.tencent.wechat01" -a "/Users/lemon4ex/Desktop/hook.bundle" "/Users/lemon4ex/Desktop/input_修改版.ipa" "/Users/lemon4ex/Desktop/output_resign.ipa"
+```
+上面命令表示使用"iPhone Developer: xxxxxx xxxx (xxxxxxxxx)"证书，重签“修改版.ipa”，重签过程中将动态库“libHook1.dylib”和“libHook2.dylib”注入到二进制（HOOK），同时修改ipa包的CFBundleIdentifier（sku）、并且添加额外的资源文件“hook.bundle”到ipa。
 
 ## dylib注入
 
@@ -35,6 +40,10 @@ ktool inject -p dylibs [-verbose] [-help] input_binary [output_binary]
     -p 需要注入到二进制文件的dylib文件，文件可以有多个，使用","分隔
 	-help 显示帮助信息
 	-verbose 输出debug详细信息
+```
+栗子
+```
+ktool inject -p "/Users/lemon4ex/Desktop/libHook1.dylib,/Users/lemon4ex/Desktop/libHook2.dylib" "/Users/lemon4ex/Desktop/WeChat/WeChat.app/WeChat"
 ```
 
 ## 联系
