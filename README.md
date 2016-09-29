@@ -45,7 +45,7 @@ ktool inject -p dylibs [-verbose] [-help] input_binary [output_binary]
 ```
 ktool inject -p "/Users/lemon4ex/Desktop/libHook1.dylib,/Users/lemon4ex/Desktop/libHook2.dylib" "/Users/lemon4ex/Desktop/WeChat/WeChat.app/WeChat"
 ```
-
+上面命令表示将两个动态库文件libHook1.dylib、libHook2.dylib注入到二进制文件WeChat中
 ## 联系
 [@lemon4ex](http://weibo.com/lemon4ex)
 
