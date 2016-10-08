@@ -226,10 +226,17 @@
         NSString *pluginBundleIdnetifier = pluginInfoPlist[@"CFBundleIdentifier"];
         printf("Modify plugin's Info.plist value for CFBundleIdentifier\n");
         pluginInfoPlist[@"CFBundleIdentifier"] = [pluginBundleIdnetifier stringByReplacingOccurrencesOfString:containerBundleIdnetifier withString:_config.bundleIdentifier];
+        
+        NSString *wkAppBundleIdentifier = pluginInfoPlist[@"NSExtension"][@"NSExtensionAttributes"][@"WKAppBundleIdentifier"];
+        if (wkAppBundleIdentifier) {
+            pluginInfoPlist[@"NSExtension"][@"NSExtensionAttributes"][@"WKAppBundleIdentifier"] = [wkAppBundleIdentifier stringByReplacingOccurrencesOfString:containerBundleIdnetifier withString:_config.bundleIdentifier];
+        }
+        
         if (![pluginInfoPlist writeToFile:pluginInfoPlistPath atomically:NO]) {
             RSLog(@"Error writing pluginInfoPlist");
             return NO;
         }
+        
     }
     
     return YES;
