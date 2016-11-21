@@ -34,6 +34,9 @@
     if (result.status == 0) {
         self.rawXML = result.output;
         NSError *error;
+        if ([result.output hasPrefix:@"security: SecPolicySetValue: One or more parameters passed to a function were not valid."]) {
+            result.output = [result.output stringByReplacingOccurrencesOfString:@"security: SecPolicySetValue: One or more parameters passed to a function were not valid." withString:@""];
+        }
         NSDictionary *info = [NSPropertyListSerialization propertyListWithData:[result.output dataUsingEncoding:NSUTF8StringEncoding] options:NSPropertyListImmutable format:0 error:&error];
         if (!error) {
             self.filePath = filePath;
