@@ -1,4 +1,6 @@
 # ktool
+**可以使用[Replica](https://github.com/lemon4ex/Replica)**来替代此工具进行重签名和动态库注入。
+
 一个包含iPA重签名以及dylib注入的命令行工具
 
 ## 用法
